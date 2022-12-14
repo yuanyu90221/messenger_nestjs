@@ -42,3 +42,5 @@ services:
     env_file:
       - .env
 ```
+
+## add other service config on docker-compose

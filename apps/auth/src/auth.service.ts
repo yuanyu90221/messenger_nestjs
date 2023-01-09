@@ -1,30 +1,30 @@
 import {
   ConflictException,
+  Inject,
   Injectable,
   UnauthorizedException,
 } from '@nestjs/common';
-import { Repository } from 'typeorm';
-import { InjectRepository } from '@nestjs/typeorm';
 import { UserEntity } from './user.entity';
 import { NewUserDto } from './dtos/new-user.dto';
 // test change bcrypt 5.0.1
 import * as bcrypt from 'bcrypt';
 import { ExistingUserDto } from './dtos/existing-user.dto';
 import { JwtService } from '@nestjs/jwt';
+import { UserRepositoryInterface } from '@app/shared/interfaces/users.repository.interface';
 
 @Injectable()
 export class AuthService {
   constructor(
-    @InjectRepository(UserEntity)
-    private readonly userRepository: Repository<UserEntity>,
+    @Inject('UsersRepositoryInterface')
+    private readonly userRepository: UserRepositoryInterface,
     private readonly jwtService: JwtService,
   ) {}
 
-  async getUsers() {
-    return this.userRepository.find();
+  async getUsers(): Promise<UserEntity[]> {
+    return await this.userRepository.findAll();
   }
   async findByEmail(email: string): Promise<UserEntity> {
-    return this.userRepository.findOne({
+    return this.userRepository.findByCondition({
       where: { email },
       select: ['id', 'firstName', 'lastName', 'email', 'password'],
     });

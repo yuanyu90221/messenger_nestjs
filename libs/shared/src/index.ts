@@ -8,3 +8,5 @@ export * from './interfaces/users.repository.interface';
 export * from './repositories/base/base.abstract.repository';
 export * from './repositories/base/base.interface.repository';
 export * from './repositories/user.repository';
+export * from './repositories/friend-requests.repository';
+export * from './interceptors/user.interceptor';

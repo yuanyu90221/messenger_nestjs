@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { SharedModule } from '@app/shared';
+import { RedisModule, SharedModule } from '@app/shared';
 import { PresenceController } from './presence.controller';
 import { PresenceService } from './presence.service';
 
@@ -11,6 +11,7 @@ import { PresenceService } from './presence.service';
       envFilePath: './.env',
     }),
     SharedModule,
+    RedisModule,
   ],
   controllers: [PresenceController],
   providers: [PresenceService],

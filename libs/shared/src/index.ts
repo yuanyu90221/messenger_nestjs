@@ -1,7 +1,7 @@
-export * from './shared.module';
-export * from './shared.service';
-export * from './auth.guard';
-export * from './postgresdb.module';
+export * from './modules/shared.module';
+export * from './services/shared.service';
+export * from './services/auth.guard';
+export * from './modules/postgresdb.module';
 export * from './entities/user.entity';
 export * from './interfaces/shared.service.interface';
 export * from './interfaces/users.repository.interface';
@@ -10,3 +10,5 @@ export * from './repositories/base/base.interface.repository';
 export * from './repositories/user.repository';
 export * from './repositories/friend-requests.repository';
 export * from './interceptors/user.interceptor';
+export * from './modules/redis.module';
+export * from './services/redis.service';

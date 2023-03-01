@@ -1,8 +1,8 @@
 import { DynamicModule, Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ClientProxyFactory, Transport } from '@nestjs/microservices';
-import { AuthGuard } from './auth.guard';
-import { SharedService } from './shared.service';
+import { AuthGuard } from '../services/auth.guard';
+import { SharedService } from '../services/shared.service';
 
 @Module({
   imports: [
